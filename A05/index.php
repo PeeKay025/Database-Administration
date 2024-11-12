@@ -1,8 +1,8 @@
 <?php
-include("connect.php"); // Include the database connection file
+include("connect.php");
 
-$query = "SELECT username, email, phone_number, will_remember FROM users"; // Updated SQL query
-$result = executeQuery($query); // Execute the query
+$query = "SELECT username, email, phone_number, will_remember FROM users";
+$result = executeQuery($query);
 ?>
 
 <!doctype html>
@@ -16,39 +16,38 @@ $result = executeQuery($query); // Execute the query
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
-            background-color: #121212; /* Dark background */
-            color: #e0e0e0; /* Light text color for contrast */
+            background-color: #121212;
+            color: #e0e0e0;
         }
         .container-fluid {
-            background-color: #212529; /* Slightly lighter for the header */
-            color: #ffffff; /* White text for header */
+            background-color: #212529;
+            color: #ffffff;
             padding: 20px;
             margin-bottom: 20px;
         }
         .card {
-            background-color: #1f1f1f; /* Dark card background */
-            border: none; /* Remove card border */
-            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+            background-color: #1f1f1f;
+            border: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
         .card:hover {
-            background-color: #2a2a2a; /* Lighter background on hover */
-            transform: translateY(-5px); /* Slight upward movement on hover */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+            background-color: #2a2a2a;
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
         .card-title {
-            color: #ffffff; /* White color for card title */
+            color: #ffffff;
         }
         .card-subtitle, .card-text {
-            color: #b0b0b0; /* Muted color for subtitles and text */
+            color: #b0b0b0;
         }
-        /* Style for the email link */
         .card-subtitle a {
-            color: #00aaff; /* Change to your desired color */
-            text-decoration: none; /* Remove underline */
+            color: #00aaff;
+            text-decoration: none;
         }
         .card-subtitle a:hover {
-            text-decoration: underline; /* Add underline on hover */
-            color: #0099cc; /* Darker shade on hover */
+            text-decoration: underline;
+            color: #0099cc;
         }
     </style>
 </head>
@@ -60,13 +59,10 @@ $result = executeQuery($query); // Execute the query
 
     <div class="container">
         <div class="row">
-
-            <!-- PHP BLOCK -->
             <?php
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($user = mysqli_fetch_assoc($result)) {
                     ?>
-
                     <div class="col-12">
                         <div class="card rounded-4 shadow my-3 mx-5">
                             <div class="card-body">
@@ -88,14 +84,12 @@ $result = executeQuery($query); // Execute the query
                             </div>
                         </div>
                     </div>
-
                     <?php
                 }
             } else {
                 echo "<p class='text-center text-light'>No records found.</p>";
             }
             ?>
-
         </div>
     </div>
 
