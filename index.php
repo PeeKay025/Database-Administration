@@ -74,6 +74,39 @@ $result = mysqli_query($conn, $query);
             text-decoration: underline;
             color: #0099cc;
         }
+
+        .form-container {
+            background-color: #1f1f1f;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+
+        .form-label {
+            color: #e0e0e0;
+        }
+
+        .form-control {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
+
+        .form-select {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            border: 1px solid #444;
+        }
+
+        .btn-primary {
+            background-color: #00aaff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0099cc;
+        }
     </style>
 </head>
 
@@ -83,38 +116,44 @@ $result = mysqli_query($conn, $query);
     </div>
 
     <div class="container">
-        <div class="mb-5">
-            <h2>Add New User</h2>
-            <form method="post" action="">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" name="username" required>
+        <div class="row">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="card form-container">
+                    <h2 class="text-center text-light">Add New User</h2>
+                    <form method="post" action="">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="will_remember" class="form-label">Will Remember</label>
+                            <select class="form-select" id="will_remember" name="will_remember" required>
+                                <option value="yes">Yes</option>
+                                <option value="no">No</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-primary">Add User</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="mb-3">
-                    <label for="phone_number" class="form-label">Phone Number</label>
-                    <input type="text" class="form-control" id="phone_number" name="phone_number" required>
-                </div>
-                <div class="mb-3">
-                    <label for="will_remember" class="form-label">Will Remember</label>
-                    <select class="form-select" id="will_remember" name="will_remember" required>
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary">Add User</button>
-            </form>
+            </div>
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
             <?php
             if ($result && mysqli_num_rows($result) > 0) {
                 while ($user = mysqli_fetch_assoc($result)) {
                     ?>
-                    <div class="col-12">
+                    <div class="col-12 col-md-6 col-lg-4">
                         <div class="card rounded-4 shadow my-3 mx-5">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo htmlspecialchars($user["username"]); ?></h5>
